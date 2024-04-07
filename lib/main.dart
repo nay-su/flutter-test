@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 import 'package:cloud_functions/cloud_functions.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,14 +13,12 @@ void main() async {
   runApp(MyApp());
 }
 
-
 Future<void> getFruit() async {
-  HttpsCallable callable = FirebaseFunctions.instance.httpsCallable('on_request_example');
+  HttpsCallable callable =
+      FirebaseFunctions.instance.httpsCallable('on_request_example');
   final results = await callable();
   return results.data;
 }
-
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -85,8 +81,8 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
 
-      // _counter++;
       getFruit();
+      _counter++;
     });
   }
 
